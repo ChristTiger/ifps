@@ -1,0 +1,25 @@
+<header>
+    <div class="top-bar">
+        <div class="logo">
+            <img src="/logo-ifps.png" alt="ifps Logo">
+            <span>IFPS</span>
+        </div>
+        <div class="contact-info ">
+            @for (addresse of adresses ; track $index) {
+            <img src="{{addresse.image}}" alt="{{addresse.image}}">
+            <div class="contact">
+                <p>{{addresse.nom}}</p>
+                <p class="value">{{addresse.value}}</p>
+            </div>
+
+            }
+        </div> 
+    </div>
+    <nav>
+        <ul class="uppercase">
+            @for (item of menuItems; track item) {
+            <li [class.contact-us]="item === 'CONTACT US'">{{ item }}</li>
+            }
+        </ul>
+    </nav>
+</header>
