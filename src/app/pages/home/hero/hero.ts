@@ -13,9 +13,9 @@ export class Hero {
   };
   content = "Rejoignez l'institut de référence à Douala. Avec plus de 25 formations pratiques et un accompagnement personnalisé, l'IFPS est le tremplin idéal pour maîtriser les métiers de l'industrie et de la santé. Votre succès commence ici.";
   description = {
-    feature1: "Nos formateurs sont des experts, dédiés à votre réussite. Ils combinent une solide expérience professionnelle et innovante pour vous offrir une formation de qualité supérieure.",
-    feature2: "Obtenez un certificat d'aptitude professionnelle reconnu par l'Etat. Ce diplôme est un atout précieux pour votre carrière, ouvrant des portes vers de nombreuses opportunités professionnelles.",
-    feature3: "Nos diplômés sont très recherchés par les employeurs grâce à la qualité de notre formation et à notre réseau de partenaires industriels. Rejoignez une communauté de professionnels compétents et bénéficiez d'un accompagnement personnalisé."
+    feature1: "Nos formateurs experts allient expérience et innovation pour votre réussite.",
+    feature2: "Décrochez un certificat professionnel d’État : un vrai atout pour votre carrière et de belles opportunités.",
+    feature3: "Nos diplômés sont très recherchés grâce à la qualité de la formation et notre réseau industriel. Rejoignez notre communauté et profitez d’un accompagnement personnalisé."
   };
 
 }
