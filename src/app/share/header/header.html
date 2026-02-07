@@ -1,25 +1,135 @@
-<header>
-    <div class="top-bar">
-        <div class="logo">
-            <img src="/logo-ifps.png" alt="ifps Logo">
+<header class="bg-white border-b border-gray-300 shadow-sm">
+    <!-- Top Bar - Caché sur mobile et tablette -->
+    <div
+        class="hidden xl:flex justify-between items-center px-4 sm:px-8 lg:px-20 h-[60px] bg-white border-b border-gray-300">
+        <!-- Logo -->
+        <div class="flex items-center justify-center font-bold text-2xl">
+            <img src="/logo-ifps.png" alt="ifps Logo" class="w-[45px] mr-[10px]">
             <span>IFPS</span>
         </div>
-        <div class="contact-info">
-            @for (addresse of adresses ; track $index) {
-            <img src="{{addresse.image}}" alt="{{addresse.image}}">
-            <div class="contact">
-                <p>{{addresse.nom}}</p>
-                <p class="value">{{addresse.value}}</p>
-            </div>
 
+        <!-- Contact Info -->
+        <div class="flex gap-5 text-sm text-gray-800">
+            @for (addresse of adresses; track $index) {
+            <div class="flex items-center">
+                <img [src]="addresse.image" [alt]="addresse.image" class="w-[45px] mr-[10px]">
+                <div class="contact">
+                    <p class="text-sm">{{addresse.nom}}</p>
+                    <p class="font-bold text-sm">{{addresse.value}}</p>
+                </div>
+            </div>
             }
-        </div> 
+        </div>
     </div>
-    <nav>
-        <ul class="uppercase">
+
+    <!-- Navigation Desktop (XL et plus) -->
+    <nav class="hidden xl:block bg-white px-20 py-[10px]">
+        <ul class="flex justify-between items-center list-none m-0 p-0 gap-5 uppercase">
             @for (item of menuItems; track item) {
-            <li [class.contact-us]="item === 'CONTACT US'">{{ item }}</li>
+            <li [class.text-gray-800]="item === 'CONTACT US'"
+                [class.border]="item === 'CONTACT US'" [class.border-black]="item === 'CONTACT US'"
+                [class.px-4]="item === 'CONTACT US'" [class.py-2]="item === 'CONTACT US'"
+                class="font-bold text-gray-800 cursor-pointer transition-colors duration-200 hover:text-[#FDB913] active:text-[rgb(203,124,5)]"
+                [class.hover:bg-[#00a8e1]]="item === 'CONTACT US'" [class.hover:text-white]="item === 'CONTACT US'">
+                {{ item }}
+            </li>
             }
         </ul>
+    </nav>
+
+    <!-- Navigation Mobile/Tablette -->
+    <nav class="xl:hidden bg-white">
+        <!-- Barre supérieure avec logo et hamburger -->
+        <div class="flex justify-between items-center px-4 py-4">
+            <!-- Logo (toujours visible) -->
+            <div class="flex items-center font-bold text-xl md:text-2xl">
+                <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+            </div>
+
+            <!-- Menu items visibles sur tablette (HOME et CONTACT) -->
+            <div class="hidden md:flex items-center gap-4 mr-4">
+                <div class="font-bold text-gray-800 cursor-pointer hover:text-[#FDB913] uppercase text-sm">
+                    Acceuil
+                </div>
+                <div
+                    class="text-gray-800 border border-black px-4 py-2 font-bold cursor-pointer hover:bg-[#00a8e1] uppercase text-sm">
+                    CONTACT US
+                </div>
+            </div>
+
+            <!-- Bouton Hamburger -->
+            <button (click)="toggleMenu()" class="text-gray-800 focus:outline-none p-2 z-50" aria-label="Toggle menu">
+                <svg *ngIf="!isMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                <svg *ngIf="isMenuOpen" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu déroulant Mobile/Tablette -->
+        <div [class.hidden]="!isMenuOpen" class="fixed inset-0 bg-white z-40 overflow-y-auto">
+
+            <!-- Header du menu avec logo et croix -->
+            <div class="flex justify-between items-center px-4 py-4 border-b border-gray-300">
+                <div class="flex items-center font-bold text-xl md:text-2xl">
+                    <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+                </div>
+            </div>
+
+            <!-- Liste des items du menu -->
+            <ul class="flex flex-col p-4 gap-2 uppercase">
+                <!-- Acceuil (caché sur tablette car déjà visible) -->
+                <li
+                    class="md:hidden font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
+                    Acceuil
+                </li>
+
+                <!-- A-propos -->
+                <li
+                    class="font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
+                    A-propos
+                </li>
+
+                <!-- Formations Techniques (Dropdown) -->
+                <li class="border-b border-gray-200">
+                    <div (click)="toggleFormationsTechniques()"
+                        class="font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors flex justify-between items-center">
+                        <span>Formations Techniques</span>
+                    </div>
+                </li>
+
+                <!-- Formations Paramédicales (Dropdown) -->
+                <li class="border-b border-gray-200">
+                    <div (click)="toggleFormationsParamedicales()"
+                        class="font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors flex justify-between items-center">
+                        <span>Formations Paramedicales</span>
+                    </div>
+                </li>
+
+                <!-- Formations Gestion/IT (Dropdown) -->
+                <li class="border-b border-gray-200">
+                    <div (click)="toggleFormationsGestion()"
+                        class="font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors flex justify-between items-center">
+                        <span>Formations Gestion/IT</span>
+                    </div>
+                </li>
+
+                <!-- Contact (caché sur tablette car déjà visible) -->
+                <li
+                    class="md:hidden font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
+                    Contact
+                </li>
+
+                <!-- CONTACT US -->
+                <li
+                    class="bg-[#FDB913] text-white border border-black px-4 py-3 font-bold cursor-pointer hover:bg-[#00a8e1] rounded text-center mt-2">
+                    CONTACT US
+                </li>
+            </ul>
+        </div>
     </nav>
 </header>

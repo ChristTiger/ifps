@@ -1,3 +1,148 @@
-.hero{
+/* Hero Section Styles */
+.hero {
     background-image: url(/etudiant.png);
+    background-attachment: scroll;
+}
+
+/* Amélioration du positionnement de l'image de fond sur mobile */
+@media (max-width: 768px) {
+    .hero {
+        background-position: 65% center;
+        min-height: 100vh;
+    }
+}
+
+/* Tablette */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+        background-position: 60% center;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .hero {
+        background-position: right center;
+        background-attachment: fixed; /* Effet parallax sur desktop */
+    }
+}
+
+/* Animations pour les boutons */
+.btn-apply,
+.btn-academics {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-apply::before,
+.btn-academics::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.btn-apply:hover::before,
+.btn-academics:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Animations pour les features */
+.feature {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation des avatars */
+.avatars img {
+    transition: transform 0.3s ease;
+}
+
+.avatars:hover img {
+    transform: scale(1.1);
+}
+
+.avatar-count {
+    transition: all 0.3s ease;
+}
+
+.avatars:hover .avatar-count {
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Amélioration de la lisibilité du texte sur mobile */
+@media (max-width: 640px) {
+    .hero h1 {
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    
+    .hero p {
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Smooth scroll pour les features sur mobile */
+@media (max-width: 768px) {
+    .features {
+        position: relative;
+        bottom: auto;
+    }
+}
+
+/* Animation d'entrée pour le contenu */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1,
+.hero p,
+.hero .flex {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero p {
+    animation-delay: 0.2s;
+}
+
+.hero .flex {
+    animation-delay: 0.4s;
+}
+
+/* Responsive typography improvements */
+@media (max-width: 640px) {
+    .feature h3 {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+    }
+    
+    .feature p {
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+    }
+}
+
+/* Amélioration des transitions */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

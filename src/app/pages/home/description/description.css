@@ -1,0 +1,266 @@
+/* Section Description/About Styles */
+
+/* Animations d'apparition au scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation du badge */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Applique les animations au chargement */
+section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.space-y-6 > *:nth-child(1) {
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.space-y-6 > *:nth-child(2) {
+  animation: fadeInLeft 0.7s ease-out;
+}
+
+.space-y-6 > *:nth-child(3),
+.space-y-6 > *:nth-child(4) {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.space-y-6 > *:nth-child(5) {
+  animation: scaleIn 1s ease-out;
+}
+
+/* Animation de l'image */
+.order-1 img {
+  animation: fadeInRight 0.9s ease-out;
+}
+
+.grid > div:hover span {
+  color: #00a8e1;
+}
+.grid > div:hover strong{
+    cursor: pointer;
+}
+
+/* Animation du badge flottant */
+.absolute.-bottom-4,
+.absolute.-bottom-5,
+.absolute.-bottom-6 {
+  animation: scaleIn 1.2s ease-out;
+}
+
+/* Effet de brillance sur le bouton */
+.inline-flex {
+  position: relative;
+  overflow: hidden;
+}
+
+.inline-flex::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.inline-flex:hover::before {
+  left: 100%;
+}
+
+/* Animation du SVG dans le bouton */
+.inline-flex:hover svg {
+  transform: translateX(2px);
+}
+
+/* Effet d'ombre dynamique sur l'image */
+.shadow-2xl {
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-2xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 168, 225, 0.25);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  /* Réduction de l'espacement sur mobile */
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Amélioration de la lisibilité du titre sur mobile */
+  h2 {
+    line-height: 1.2;
+  }
+
+  /* Stats grid plus compact sur mobile */
+  .grid.grid-cols-2 {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* Tablette - espacement optimal */
+  .space-y-6 {
+    gap: 1.75rem;
+  }
+}
+
+/* Animation au hover de la stat grid */
+.grid > div {
+  transition: all 0.3s ease;
+}
+
+.grid > div:hover img {
+  filter: brightness(1.1);
+  transform: rotate(2deg);
+}
+
+/* Effet de focus pour l'accessibilité */
+a:focus,
+button:focus {
+  outline: 2px solid #00a8e1;
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Effet parallax léger sur desktop */
+@media (min-width: 1024px) {
+  .order-1 {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Animation des icônes au survol */
+img[alt="Diplôme"],
+img[alt="Formation pratique"],
+img[alt="Expert"] {
+  transition: all 0.3s ease;
+}
+
+/* Amélioration visuelle du border dashed */
+.border-dashed {
+  background-size: 10px 1px;
+  background-repeat: repeat-x;
+  background-position:
+    0 0,
+    0 100%;
+}
+
+/* Ajout d'un effet de lueur sur les éléments interactifs */
+.transform:hover {
+  filter: drop-shadow(0 4px 8px rgba(0, 168, 225, 0.2));
+}
+
+/* Animation de chargement progressive */
+@keyframes progressiveLoad {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+img {
+  animation: progressiveLoad 0.6s ease-out;
+}
+
+/* Effet de survol sur le texte des stats */
+.text-gray-600 {
+  transition: color 0.3s ease;
+}
+
+/* Amélioration du contraste sur mobile */
+@media (max-width: 640px) {
+  .text-gray-700 {
+    color: #374151;
+  }
+
+  .text-gray-600 {
+    color: #4b5563;
+  }
+}
+
+/* Animation du bouton CTA */
+@keyframes buttonPulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.inline-flex {
+  animation: buttonPulse 2s infinite;
+}
+
+.inline-flex:hover {
+  animation: none;
+}

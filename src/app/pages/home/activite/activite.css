@@ -1,0 +1,434 @@
+/* Section Activités/Domaines de Formation - Styles */
+
+/* ========================================
+   ANIMATIONS AU CHARGEMENT
+======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Application des animations */
+section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.text-center {
+  animation: fadeInUp 1s ease-out;
+}
+
+.text-center h2 {
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.text-center p {
+  animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+/* Animation des cartes */
+.grid > div:nth-child(1) {
+  animation: slideInLeft 0.8s ease-out 0.2s backwards;
+}
+
+.grid > div:nth-child(2) {
+  animation: fadeInUp 0.8s ease-out 0.3s backwards;
+}
+
+.grid > div:nth-child(3) {
+  animation: slideInRight 0.8s ease-out 0.4s backwards;
+}
+
+/* ========================================
+   EFFETS HOVER SUR LES CARTES
+======================================== */
+
+/* Effet de brillance qui traverse la carte */
+.group::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.7s;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.group:hover::before {
+  left: 100%;
+}
+
+/* Amélioration de l'ombre au hover */
+.group {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(0, 168, 225, 0.1);
+}
+
+/* ========================================
+   EFFETS SUR LES IMAGES
+======================================== */
+
+/* Filtre de luminosité au hover */
+.group:hover img {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Effet Ken Burns sur les images */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.group:hover img {
+  animation: kenBurns 10s ease-out infinite alternate;
+}
+
+/* ========================================
+   BADGES DÉCORATIFS
+======================================== */
+
+.absolute.top-4 {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* Pulse effect sur les badges */
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+  }
+}
+
+.group:hover .absolute.top-4 {
+  animation: badgePulse 2s infinite;
+}
+
+/* ========================================
+   LIENS ET BOUTONS
+======================================== */
+
+/* Effet underline animé sur les liens */
+.group a {
+  position: relative;
+}
+
+.group a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.group a:hover::after {
+  width: 100%;
+}
+
+
+@keyframes arrowBounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+/* ========================================
+   BOUTON CTA PRINCIPAL
+======================================== */
+
+/* Effet de vague au clic */
+.inline-flex {
+  position: relative;
+  overflow: hidden;
+}
+
+.inline-flex::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.inline-flex:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Gradient animé sur le bouton */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ========================================
+   RESPONSIVE OPTIMIZATIONS
+======================================== */
+
+/* Mobile (< 640px) */
+@media (max-width: 640px) {
+  /* Réduction de l'espacement vertical */
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Cartes plus compactes */
+  .group {
+    margin-bottom: 0;
+  }
+
+  /* Texte plus lisible */
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  /* Désactivation des animations complexes sur mobile */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Tablette (640px - 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* Espacement optimal */
+  .grid {
+    gap: 1.75rem;
+  }
+
+  /* Hauteur d'image ajustée */
+  .h-52 {
+    height: 14rem;
+  }
+}
+
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  /* Effet parallax léger */
+  .group {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .group:hover {
+    transform: translateY(-2px) rotateX(1deg);
+  }
+
+  /* Amélioration des ombres sur grand écran */
+  .shadow-2xl {
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.15),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* ========================================
+   EFFETS SUPPLÉMENTAIRES
+======================================== */
+
+/* Effet de focus pour l'accessibilité */
+a:focus,
+button:focus {
+  outline: 3px solid #00a8e1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Amélioration du contraste des couleurs */
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-900 {
+  color: #111827;
+}
+
+
+/* Effet de vibration subtile au survol */
+@keyframes subtleVibrate {
+  0%,
+  100% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-0.5deg);
+  }
+}
+
+/* Loading state pour les images */
+img {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+img[src] {
+  animation: none;
+  background: none;
+}
+
+/* Dark mode support (optionnel) */
+@media (prefers-color-scheme: dark) {
+  .bg-gray-50 {
+    background-color: #1f2937;
+  }
+
+  .bg-white {
+    background-color: #374151;
+  }
+
+  .text-gray-900 {
+    color: #f9fafb;
+  }
+
+  .text-gray-600 {
+    color: #d1d5db;
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Effet de particules au survol (optionnel, avancé) */
+@keyframes particles {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+/* Print styles */
+@media print {
+  .shadow-lg,
+  .shadow-2xl {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+
+  .group:hover {
+    transform: none;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+}
