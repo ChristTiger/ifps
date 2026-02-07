@@ -1,0 +1,66 @@
+<!-- src/app/components/chiffres-cles/chiffres-cles.component.html -->
+<section class="py-16 md:py-24 bg-center bg-cover" style="background-image: url(/chiffres.jpg);">
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
+
+            <!-- 1. Formations -->
+            <div
+                class="p-8 text-center">
+                <div class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4">
+                    <span [appCountup]="25" [startVal]="0" [duration]="2200" prefix="+">0</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">
+                    Formations Professionnelles
+                </h3>
+                <p class="text-white">
+                    Une offre diversifiée et actualisée
+                </p>
+            </div>
+
+            <!-- 2. Domaines -->
+            <div
+                class="p-8 text-center">
+                <div class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4">
+                    <span [appCountup]="3" [startVal]="0" [duration]="1800">0</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">
+                    Grands Domaines
+                </h3>
+                <p class="text-white">
+                    Technique – Paramédical – Gestion/Informatique
+                </p>
+            </div>
+
+            <!-- 3. Diplômes -->
+            <div
+                class="p-8 text-center">
+                <div class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4">
+                    <span [appCountup]="100" [startVal]="0" [duration]="2000" suffix="%">0</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">
+                    Diplômes Reconnus
+                </h3>
+                <p class="text-white">
+                    AQP – CQP – DQP
+                </p>
+            </div>
+
+            <!-- 4. Complémentaires -->
+            <div
+                class="p-8 text-center">
+                <div class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4">
+                    <span [appCountup]="2" [startVal]="0" [duration]="1600">0</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-white mb-3">
+                    Formations Complémentaires
+                </h3>
+                <p class="text-white">
+                    Anglais + Auto-école
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
