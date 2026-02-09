@@ -5,7 +5,9 @@
 
             <div class="space-y-6">
                 <div class="flex items-center gap-3">
-                    <img src="/logo-ifps.png" alt="Logo IFPS Le Succès" class="h-14 w-14 object-contain">
+                    <a routerLink="/home">
+                        <img src="/logo-ifps.png" alt="Logo IFPS Le Succès" class="h-14 w-14 object-contain">
+                    </a>
                     <h3 class="text-white text-2xl font-bold tracking-tight">
                         IFPS Le Succès
                     </h3>
@@ -46,15 +48,49 @@
             <div>
                 <h4 class="text-white text-lg font-semibold mb-5">Liens Rapides</h4>
                 <ul class="space-y-3 text-base">
-                    <li><a routerLink="/" class="hover:text-[#00A8E1] transition-colors">Accueil</a></li>
-                    <li><a routerLink="/a-propos" class="hover:text-[#00A8E1] transition-colors">À propos</a></li>
-                    <li><a routerLink="/formations/techniques"
-                            class="hover:text-[#00A8E1] transition-colors">Techniques</a></li>
-                    <li><a routerLink="/formations/paramedicales"
-                            class="hover:text-[#00A8E1] transition-colors">Paramédicales</a></li>
-                    <li><a routerLink="/formations/gestion-it" class="hover:text-[#00A8E1] transition-colors">Gestion &
-                            IT</a></li>
-                    <li><a routerLink="/contact" class="hover:text-[#00A8E1] transition-colors">Contact</a></li>
+                    <li>
+                        <a routerLink="/home"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           [routerLinkActiveOptions]="{ exact: true }"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/about"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            À propos
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/formationstechniques"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            Techniques
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/formationparamedicale"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            Paramédicales
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/formationgestion"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            Gestion & IT
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/contact"
+                           routerLinkActive="text-[#00A8E1] font-semibold"
+                           class="hover:text-[#00A8E1] transition-colors">
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </div>
 

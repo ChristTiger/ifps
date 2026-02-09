@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-description',
   standalone: true,
-  imports: [],
+  imports: [ RouterLink],
   templateUrl: './description.html',
   styleUrl: './description.css',
 })
 export class Description {
-  // Vous pouvez ajouter des données dynamiques ici si nécessaire
   
   stats = [
     {
@@ -48,6 +48,6 @@ export class Description {
       label: 'Jeunes formés'
     },
     ctaText: 'Découvrir nos formations',
-    ctaLink: '#formations'
+    ctaLink: '/formationstechniques'
   };
 }

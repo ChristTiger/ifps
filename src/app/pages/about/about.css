@@ -1,0 +1,563 @@
+/* Page À Propos IFPS - Styles Modernes */
+
+/* ========================================
+   ANIMATIONS KEYFRAMES
+======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   ELEMENTS ANIMES AU SCROLL
+======================================== */
+
+[data-aos] {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+[data-aos].animate-in {
+  opacity: 1;
+}
+
+[data-aos="fade-up"].animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+[data-aos="fade-down"].animate-in {
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+[data-aos="fade-left"].animate-in {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+[data-aos="fade-right"].animate-in {
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+[data-aos-delay="100"].animate-in {
+  animation-delay: 0.1s;
+}
+
+[data-aos-delay="200"].animate-in {
+  animation-delay: 0.2s;
+}
+
+[data-aos-delay="300"].animate-in {
+  animation-delay: 0.3s;
+}
+
+/* ========================================
+   HERO SECTION
+======================================== */
+
+.about-page {
+  font-family:
+    "Inter",
+    "Open Sans",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+/* Animation des cercles décoratifs */
+.absolute.opacity-10 > div {
+  animation: float 8s ease-in-out infinite;
+}
+
+.absolute.opacity-10 > div:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.absolute.opacity-10 > div:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.absolute.opacity-10 > div:nth-child(3) {
+  animation-delay: 4s;
+}
+
+/* Délai pour l'animation pulse */
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Badge animé */
+.inline-flex.items-center.gap-2 {
+  animation: scaleIn 0.6s ease 0.3s backwards;
+}
+
+/* Titre principal */
+h1 {
+  animation: fadeInDown 0.8s ease 0.5s backwards;
+}
+
+/* Stats rapides */
+.grid.grid-cols-2.md\:grid-cols-4 > div {
+  animation: scaleIn 0.6s ease backwards;
+  transition: all 0.3s ease;
+}
+
+.grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(2) {
+  animation-delay: 0.7s;
+}
+
+.grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+/* ========================================
+   IMAGES ET CARTES
+======================================== */
+
+/* Effet hover sur images */
+img {
+  transition:
+    transform 0.7s ease,
+    filter 0.3s ease;
+}
+
+img:hover {
+  filter: brightness(1.05) contrast(1.01);
+}
+
+/* Loading state pour images */
+img:not([src]) {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Cartes */
+.group.relative.bg-white {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de brillance sur les cartes */
+.group.relative.bg-white::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.7s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.group.relative.bg-white:hover::before {
+  left: 100%;
+}
+
+/* ========================================
+   BOUTONS ET LIENS
+======================================== */
+
+/* Effet de vague au clic */
+a,
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+a::after,
+button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+  pointer-events: none;
+}
+
+a:active::after,
+button:active::after {
+  width: 400px;
+  height: 400px;
+}
+
+/* Flèches animées */
+svg {
+  transition: transform 0.3s ease;
+}
+
+.group:hover svg,
+.group\/link:hover svg {
+  transform: translateX(4px);
+}
+
+
+/* ========================================
+   SECTIONS SPÉCIFIQUES
+======================================== */
+
+/* Mission & Vision cards */
+.group.bg-white.p-8,
+.group.bg-white.p-10,
+.group.bg-white.p-12 {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diplômes */
+.group.bg-white.p-5,
+.group.bg-white.p-6 {
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   GRADIENTS ET COULEURS
+======================================== */
+
+/* Gradient animé pour texte */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Borders animés */
+@keyframes borderGlow {
+  0%,
+  100% {
+    border-color: #00a8e1;
+    box-shadow: 0 0 10px rgba(0, 168, 225, 0.3);
+  }
+  50% {
+    border-color: #fdb913;
+    box-shadow: 0 0 20px rgba(253, 185, 19, 0.5);
+  }
+}
+
+.border-animate {
+  animation: borderGlow 3s infinite;
+}
+
+/* ========================================
+   RESPONSIVE OPTIMIZATIONS
+======================================== */
+
+/* Mobile */
+@media (max-width: 640px) {
+  /* Réduction des animations sur mobile */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Ajustement des espacements */
+  .py-16,
+  .py-20,
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Amélioration lisibilité */
+  h1,
+  h2,
+  h3 {
+    line-height: 1.3;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+/* Tablette */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid {
+    gap: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  /* Effet parallax */
+  .relative.z-10 {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  /* Hover 3D sur cartes */
+  .group.relative.bg-white:hover {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+}
+
+/* ========================================
+   ACCESSIBILITÉ
+======================================== */
+
+/* Focus visible */
+a:focus,
+button:focus {
+  outline: 3px solid #00a8e1;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Amélioration contraste */
+.text-gray-600 {
+  color: #4b5563;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.text-gray-900 {
+  color: #111827;
+}
+
+/* ========================================
+   DARK MODE (OPTIONNEL)
+======================================== */
+
+@media (prefers-color-scheme: dark) {
+  .bg-white {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+
+  .bg-gray-50 {
+    background-color: #111827;
+  }
+
+  .text-gray-900 {
+    color: #f9fafb;
+  }
+
+  .text-gray-700 {
+    color: #e5e7eb;
+  }
+
+  .text-gray-600 {
+    color: #d1d5db;
+  }
+
+  .border-gray-100,
+  .border-gray-200 {
+    border-color: #374151;
+  }
+
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+======================================== */
+
+@media print {
+  .shadow-lg,
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb;
+  }
+
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background: white !important;
+    color: black !important;
+  }
+
+  a {
+    color: #00a8e1 !important;
+    text-decoration: underline;
+  }
+
+  .transform,
+  .hover\:scale-101 {
+    transform: none !important;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}
+
+/* ========================================
+   PERFORMANCE
+======================================== */
+
+/* GPU Acceleration */
+.transform,
+img,
+.transition-all,
+.transition-transform,
+.group {
+  will-change: transform, opacity;
+}
+
+/* Optimisation rendu polices */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   UTILITIES CUSTOM
+======================================== */
+
+/* Bordure dégradée animée */
+.border-gradient {
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(white, white), linear-gradient(135deg, #00a8e1, #fdb913);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/* Ombre colorée */
+.shadow-blue {
+  box-shadow: 0 10px 40px rgba(0, 168, 225, 0.3);
+}
+
+.shadow-yellow {
+  box-shadow: 0 10px 40px rgba(253, 185, 19, 0.3);
+}
+
+/* Backdrop blur custom */
+.backdrop-blur-custom {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+.hero{
+    background-image: url(/description.jpg);
+    background-size: cover;
+    background-position: center;
+}

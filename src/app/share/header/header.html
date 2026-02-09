@@ -4,7 +4,9 @@
         class="hidden xl:flex justify-between items-center px-4 sm:px-8 lg:px-20 h-[60px] bg-white border-b border-gray-300">
         <!-- Logo -->
         <div class="flex items-center justify-center font-bold text-2xl">
-            <img src="/logo-ifps.png" alt="ifps Logo" class="w-[45px] mr-[10px]">
+            <a routerLink="/home">
+                <img src="/logo-ifps.png" alt="ifps Logo" class="w-[45px] mr-[10px]">
+            </a>
             <span>IFPS</span>
         </div>
 
@@ -26,12 +28,22 @@
     <nav class="hidden xl:block bg-white px-20 py-[10px]">
         <ul class="flex justify-between items-center list-none m-0 p-0 gap-5 uppercase">
             @for (item of menuItems; track item) {
-            <li [class.text-gray-800]="item === 'CONTACT US'"
-                [class.border]="item === 'CONTACT US'" [class.border-black]="item === 'CONTACT US'"
-                [class.px-4]="item === 'CONTACT US'" [class.py-2]="item === 'CONTACT US'"
-                class="font-bold text-gray-800 cursor-pointer transition-colors duration-200 hover:text-[#FDB913] active:text-[rgb(203,124,5)]"
-                [class.hover:bg-[#00a8e1]]="item === 'CONTACT US'" [class.hover:text-white]="item === 'CONTACT US'">
-                {{ item }}
+            <li>
+                <a
+                    [routerLink]="getRoute(item)"
+                    routerLinkActive="text-[#FDB913] font-extrabold"
+                    [routerLinkActiveOptions]="{ exact: isHome(item) }"
+                    [class.text-gray-800]="item === 'CONTACT US'"
+                    [class.border]="item === 'CONTACT US'"
+                    [class.border-black]="item === 'CONTACT US'"
+                    [class.px-4]="item === 'CONTACT US'"
+                    [class.py-2]="item === 'CONTACT US'"
+                    class="font-bold text-gray-800 cursor-pointer transition-colors duration-200 hover:text-[#FDB913] active:text-[rgb(203,124,5)]"
+                    [class.hover:bg-[#00a8e1]]="item === 'CONTACT US'"
+                    [class.hover:text-white]="item === 'CONTACT US'"
+                >
+                    {{ item }}
+                </a>
             </li>
             }
         </ul>
@@ -43,18 +55,28 @@
         <div class="flex justify-between items-center px-4 py-4">
             <!-- Logo (toujours visible) -->
             <div class="flex items-center font-bold text-xl md:text-2xl">
-                <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+                <a routerLink="/home">
+                    <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+                </a>
             </div>
 
             <!-- Menu items visibles sur tablette (HOME et CONTACT) -->
             <div class="hidden md:flex items-center gap-4 mr-4">
-                <div class="font-bold text-gray-800 cursor-pointer hover:text-[#FDB913] uppercase text-sm">
+                <a
+                    routerLink="/home"
+                    routerLinkActive="text-[#FDB913]"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="font-bold text-gray-800 cursor-pointer hover:text-[#FDB913] uppercase text-sm"
+                >
                     Acceuil
-                </div>
-                <div
-                    class="text-gray-800 border border-black px-4 py-2 font-bold cursor-pointer hover:bg-[#00a8e1] uppercase text-sm">
+                </a>
+                <a
+                    routerLink="/contact"
+                    routerLinkActive="bg-[#00a8e1] text-white"
+                    class="text-gray-800 border border-black px-4 py-2 font-bold cursor-pointer hover:bg-[#00a8e1] uppercase text-sm"
+                >
                     CONTACT US
-                </div>
+                </a>
             </div>
 
             <!-- Bouton Hamburger -->
@@ -76,22 +98,35 @@
             <!-- Header du menu avec logo et croix -->
             <div class="flex justify-between items-center px-4 py-4 border-b border-gray-300">
                 <div class="flex items-center font-bold text-xl md:text-2xl">
-                    <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+                    <a routerLink="/home">
+                        <img src="/logo-ifps.png" alt="ifps Logo" class="w-10 md:w-12 mr-2">
+                    </a>
                 </div>
             </div>
 
             <!-- Liste des items du menu -->
             <ul class="flex flex-col p-4 gap-2 uppercase">
                 <!-- Acceuil (caché sur tablette car déjà visible) -->
-                <li
-                    class="md:hidden font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
-                    Acceuil
+                <li class="md:hidden">
+                    <a
+                        routerLink="/home"
+                        routerLinkActive="bg-gray-100 text-[#FDB913] font-extrabold"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        class="block font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors"
+                    >
+                        Acceuil
+                    </a>
                 </li>
 
                 <!-- A-propos -->
-                <li
-                    class="font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
-                    A-propos
+                <li>
+                    <a
+                        [routerLink]="getRoute('A-propos')"
+                        routerLinkActive="bg-gray-100 text-[#FDB913] font-extrabold"
+                        class="block font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors"
+                    >
+                        A-propos
+                    </a>
                 </li>
 
                 <!-- Formations Techniques (Dropdown) -->
@@ -118,16 +153,26 @@
                     </div>
                 </li>
 
-                <!-- Contact (caché sur tablette car déjà visible) -->
-                <li
-                    class="md:hidden font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors">
-                    Contact
+                <!-- Contact (caché sur tablette) -->
+                <li class="md:hidden">
+                    <a
+                        [routerLink]="getRoute('Contact')"
+                        routerLinkActive="bg-gray-100 text-[#FDB913] font-extrabold"
+                        class="block font-bold text-gray-800 cursor-pointer py-3 px-4 hover:bg-gray-100 rounded transition-colors"
+                    >
+                        Contact
+                    </a>
                 </li>
 
                 <!-- CONTACT US -->
-                <li
-                    class="bg-[#FDB913] text-white border border-black px-4 py-3 font-bold cursor-pointer hover:bg-[#00a8e1] rounded text-center mt-2">
-                    CONTACT US
+                <li>
+                    <a
+                        routerLink="/contact"
+                        routerLinkActive="bg-[#00a8e1] text-white"
+                        class="block bg-[#FDB913] text-white border border-black px-4 py-3 font-bold cursor-pointer hover:bg-[#00a8e1] rounded text-center mt-2"
+                    >
+                        CONTACT US
+                    </a>
                 </li>
             </ul>
         </div>

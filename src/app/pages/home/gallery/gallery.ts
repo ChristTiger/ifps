@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 interface GalleryItem {
   id: number;
@@ -10,7 +11,7 @@ interface GalleryItem {
 
 @Component({
   selector: 'app-gallery',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './gallery.html',
   styleUrl: './gallery.css',
 })

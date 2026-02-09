@@ -1,0 +1,48 @@
+/* Page Contact IFPS - Version Simplifiée */
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Formulaire */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+/* Boutons */
+button {
+    transition: background-color 0.2s ease;
+}
+
+/* Images */
+img {
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    input,
+    textarea,
+    select {
+        font-size: 16px; /* Évite zoom iOS */
+    }
+}
+
+/* Accessibilité */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #00A8E1;
+    outline-offset: 2px;
+}
+
+/* Sélection de texte */
+::selection {
+    background-color: #00A8E1;
+    color: white;
+}

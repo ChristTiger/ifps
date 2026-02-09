@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 export interface TrainingDomain {
   id: number;
@@ -16,7 +17,7 @@ export interface TrainingDomain {
 @Component({
   selector: 'app-activite',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './activite.html',
   styleUrl: './activite.css',
 })
