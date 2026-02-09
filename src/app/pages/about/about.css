@@ -557,7 +557,7 @@ img,
   backdrop-filter: blur(20px);
 }
 .hero{
-    background-image: url(/description.jpg);
+    background-image: url(/description2.png);
     background-size: cover;
     background-position: center;
 }
